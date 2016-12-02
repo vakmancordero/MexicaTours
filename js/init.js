@@ -20,6 +20,4 @@ function initialize() {
     
     $('.modal').modal();
     
-    $('#modal-product-form').modal('close');
-    
 }

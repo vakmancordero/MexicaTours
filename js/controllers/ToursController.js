@@ -1,7 +1,11 @@
 
-app.controller('ToursController', function($scope, $http) {
+/* global mexicaApp */
+
+mexicaApp.controller('ToursController', function($scope, $http) {
     
     $scope.showCreateForm = function() {
+        
+        $("#modal-product-title").text("Crear un nuevo Tour!");
         
         $scope.clearForm();
 
@@ -16,17 +20,21 @@ app.controller('ToursController', function($scope, $http) {
     $scope.clearForm = function(){
         $scope.id = "";
         $scope.name = "";
-        $scope.description = "";
+        $scope.about = "";
+        $scope.arriveTime = "";
+        $scope.departureTime = "";
         $scope.price = "";
     };
     
     $scope.createProduct = function(){
         
-        $http.post('create_product.php', {
+        $http.post('crud/create_tour.php', {
             
-                'name' : $scope.name, 
-                'description' : $scope.description, 
-                'price' : $scope.price
+            'name' : $scope.name, 
+            'about' : $scope.about, 
+            'departureTime' : $scope.departureTime,
+            'arriveTime' : $scope.arriveTime,
+            'price' : $scope.price
                 
         }).success(function (data, status, headers, config) {
             
@@ -39,7 +47,18 @@ app.controller('ToursController', function($scope, $http) {
             $scope.clearForm();
             
             $scope.getAll();
+            
         });
+    };
+    
+    $scope.getAll = function(){
+        
+        $http.get("crud/read_tour.php").success(function(response){
+            
+            $scope.tours = response.tours;
+            
+        });
+        
     };
     
 });

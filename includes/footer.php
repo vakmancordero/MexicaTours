@@ -5,6 +5,8 @@
         <script type="text/javascript" src="lib/angular/angular.min.js"></script>
         
         <script type="text/javascript" src="js/init.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers/ToursController.js"></script>
         
     </body>
     

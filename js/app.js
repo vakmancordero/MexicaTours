@@ -1,1 +1,1 @@
-var app = angular.module('mexicaApp', []);
+var mexicaApp = angular.module('mexicaApp', []);
